@@ -1,6 +1,8 @@
 package com.study.dataStructure.list.array;
 
 import com.study.dataStructure.exception.IndexOutOfArrayExceptiom;
+import com.study.dataStructure.exception.NoMoreElementInArray;
+import com.study.dataStructure.list.MyIterator;
 import com.study.dataStructure.list.MyList;
 
 public class MyArrayList<E> implements MyList<E> {
@@ -91,8 +93,32 @@ public class MyArrayList<E> implements MyList<E> {
      */
     private void checkIndexIllegal(int index) {
         if(index < 0 || index > size-1){
+            //抛出自定义异常
             throw new IndexOutOfArrayExceptiom("数组索引越界，非法的index："+index);
         }
     }
 
+    private class ArrayListIterator<E> implements MyIterator<E>{
+        private int current = 0; //当前迭代到的索引位置
+
+        public boolean hasNext() {
+            return current < size;
+        }
+
+        public E next() {
+            if(current > size-1){
+                throw new NoMoreElementInArray();
+            }
+            return (E) arr[current++];
+        }
+
+        public E remove() {
+            checkIndexIllegal(current-1);
+            return (E) MyArrayList.this.remove(--current);
+        }
+    }
+
+    public MyIterator<E> iterator(){
+        return new ArrayListIterator();
+    }
 }
