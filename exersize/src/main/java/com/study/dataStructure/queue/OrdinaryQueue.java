@@ -81,7 +81,7 @@ public class OrdinaryQueue {
         }
        int index = front+1;
         for (; index <= rear ; index++) {
-            System.out.printf("arr[%d],%d",index,arr[index]);
+            System.out.printf("arr[%d]=%d;\n",index,arr[index]);
         }
     }
 }
