@@ -14,4 +14,6 @@ public interface MyList<E> {
 
     int size();
 
+    void clear();
+
 }

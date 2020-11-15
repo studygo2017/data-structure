@@ -16,12 +16,11 @@ public class MyArrayList<E> implements MyList<E> {
     private int size ; //当前动态数组的长度
 
     public MyArrayList(int initCapacity){
-        arr = (E[]) new Object[initCapacity];
-        this.size = 0;
+        doClear(initCapacity);
     }
 
     public MyArrayList(){
-        this(DEFAULT_CAPACITY);
+        doClear(DEFAULT_CAPACITY);
     }
 
     public boolean add(E e) {
@@ -66,6 +65,18 @@ public class MyArrayList<E> implements MyList<E> {
 
     public int size() {
         return size;
+    }
+
+    /**
+     * 清空数组
+     */
+    public void clear(){
+       doClear(DEFAULT_CAPACITY);
+    }
+
+    private void doClear(int initCapacity){
+        arr = (E[]) new Object[initCapacity];
+        this.size = 0;
     }
 
     /**
