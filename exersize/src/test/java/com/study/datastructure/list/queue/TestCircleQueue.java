@@ -1,6 +1,6 @@
 package com.study.datastructure.list.queue;
 
-import com.study.dataStructure.queue.CircleQueue;
+import com.study.dataStructure.list.queue.CircleQueue;
 import org.junit.Test;
 
 public class TestCircleQueue {

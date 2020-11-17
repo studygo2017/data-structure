@@ -1,4 +1,4 @@
-package com.study.dataStructure.queue;
+package com.study.dataStructure.list.queue;
 
 public class OrdinaryQueue {
     //底层维护队列数据的数据
