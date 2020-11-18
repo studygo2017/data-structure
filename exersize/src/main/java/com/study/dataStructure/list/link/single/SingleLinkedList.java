@@ -36,16 +36,16 @@ public class SingleLinkedList{
      * 删除结点
      * @return
      */
-    public TrueManNode remove(TrueManNode node){
-        if( isEmpty() ) throw new RuntimeException("链表为空");
-        TrueManNode temp = head;
-        while(temp.next != null){
-            if(node.no == temp.no){
-                return temp;
+    public void remove(TrueManNode node){
+        TrueManNode temp = head; //指向头结点
+        while(temp.next!=null){
+            if(temp.next.no == node.no){
+                temp.next = temp.next.next; //没有指针指向这个结点，自然便会被gc
+                return;
             }
             temp = temp.next;
         }
-        throw new RuntimeException("链表中没有这个结点");
+        throw new RuntimeException("没有这个结点");
     }
 
     /**
