@@ -34,21 +34,28 @@ public class SingleSortLinkedList {
         return true;
     }
 
-    public TrueManNode remove(TrueManNode node){
+    public void remove(TrueManNode node){
         TrueManNode temp = head; //指向头结点
         while(temp.next!=null){
             if(temp.next.no == node.no){
                 temp.next = temp.next.next; //没有指针指向这个结点，自然便会被gc
-                break;
+                return ;
             }
             temp = temp.next;
         }
-        return temp;
+        throw new RuntimeException("没有这个结点");
     }
 
-    public void update(TrueManNode node){
-        TrueManNode temp = head.next;
-
+    public boolean updateNode(TrueManNode node){
+        if( isEmpty() ) throw new RuntimeException("链表为空");
+        TrueManNode temp = head;
+        while(temp.next != null){
+            if(temp.no == node.no){
+                temp = node;
+                return true;
+            }
+        }
+        throw new RuntimeException("没有编号"+node.no+"的结点");
     }
 
     /**

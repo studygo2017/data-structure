@@ -12,6 +12,10 @@ public class SingleLinkedList{
      */
     private TrueManNode head = new TrueManNode();
 
+    public TrueManNode getHead(){
+        return head;
+    }
+
     /**
      * 添加结点
      * @return
@@ -84,4 +88,20 @@ public class SingleLinkedList{
         return head == null || head.next == null;
     }
 
+    /**
+     * 获取链表的有效结点个数
+     * @return 链表长度
+     */
+    public int size(){
+        TrueManNode temp = head.next; //首结点
+        if(temp == null){
+            return 0;
+        }
+        int size = 1;
+        while (temp.next != null){
+            size++;
+            temp = temp.next;
+        }
+        return size;
+    }
 }
