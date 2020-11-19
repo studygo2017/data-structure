@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
  * 链表结点
  */
 @Data
-@NoArgsConstructor
 public class TrueManNode {
 
      public int no;//好汉座次
@@ -20,6 +19,14 @@ public class TrueManNode {
 
      @Override
      public String toString(){
-          return new StringBuilder("好汉座次:"+no).append(" - ").append(nickname).append("-").toString();
+          return new StringBuilder("梁山好汉:"+no).append(" - ").append(nickname).append("-").append(name).toString();
      }
+
+     public TrueManNode(int no,String nickname,String name){
+          this.no = no;
+          this.nickname = nickname;
+          this.name = name;
+     }
+
+     public TrueManNode(){}
 }

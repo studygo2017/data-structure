@@ -22,7 +22,7 @@ public class SingleLinkedList{
      */
     public boolean add(TrueManNode node){
         if(isEmpty()) {
-            head = node;
+            head.next = node;
         }else{
             TrueManNode temp = head.next;
             while(true){
@@ -74,11 +74,12 @@ public class SingleLinkedList{
      */
     public String toString(){
         if( isEmpty() ) return "[]";
-        StringBuilder sb = new StringBuilder("["+head.toString());
+        StringBuilder sb = new StringBuilder("[");
         TrueManNode temp = head;
         while (temp.next != null){
             temp = temp.next;
-            sb.append("   ").append(temp.toString());
+            sb.append(temp.toString());
+            if(temp.next!=null) sb.append("   ");
         }
         sb.append("]");
         return sb.toString();

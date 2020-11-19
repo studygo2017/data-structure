@@ -15,22 +15,23 @@ public class SingleSortLinkedList {
      * @return
      */
     public boolean add(TrueManNode node){
-        TrueManNode temp = head; //指向头结点
+        TrueManNode temp = head; //头结点
+        if(isEmpty()) {
+            temp.next = node;
+            return true;
+        }
+        //遍历直到找到大于当前no的
+        while (true){
+            if(temp.next.no == node.no) throw new RuntimeException("已存在");
 
-        //循环直到找到大于参数结点编号的结点
-        while(true){
-            if(temp.next == null){ //已经到了末尾或链表本身就为空;加上
+            if(temp.next==null || temp.next.no > node.no){ //temp的下一个no已经大于node的no，故要放到temp后面去
                 break;
+            }else{
+                temp = temp.next;
             }
-            if(temp.next.no == node.no){ //已经存在
-                throw new RuntimeException("已经存在");
-            }
-            if(temp.next.no > node.no){ //找到了
-                break;
-            }
-            temp = temp.next;
         }
         node.next = temp.next;
+        temp.next = node;
         return true;
     }
 
@@ -64,11 +65,12 @@ public class SingleSortLinkedList {
      */
     public String toString(){
         if( isEmpty() ) return "[]";
-        StringBuilder sb = new StringBuilder("["+head.toString());
+        StringBuilder sb = new StringBuilder("[");
         TrueManNode temp = head;
         while (temp.next != null){
             temp = temp.next;
-            sb.append("   ").append(temp.toString());
+            sb.append(temp.toString());
+            if(temp.next!=null) sb.append("   ");
         }
         sb.append("]");
         return sb.toString();
