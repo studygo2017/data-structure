@@ -32,23 +32,22 @@ public class SglLinkedQuestion {
     /**
      * 翻转链表
      * 思路：
-     *  创建一个新链表的表头，顺序遍历原链表，将原链表的每一个结点元素添加到新链表的最前面
+     *  创建一个新链表的表头，顺序遍历原链表，将原链表的每一个结点元素添加到新表头的最前面
      */
     public static void reverseLink(SingleLinkedList linkedList){
         if( linkedList.size()<=1 ) return ;
-        TrueManNode reverseHead = new TrueManNode();
 
-        TrueManNode temp = linkedList.getHead().next; //头结点
-        while (true){
-            //从头结点开始
-            TrueManNode lastNext = reverseHead.next; //新链表的头结点
-            reverseHead.next = temp; //放到最前面去
-            reverseHead.next.next = lastNext;
+        TrueManNode newHead = new TrueManNode();
+        TrueManNode current = linkedList.getHead().next; //首元素开始，用于遍历原链表的
+        TrueManNode next = null;
+        while(current!=null){ //尾元素进不来循环
+            next = current.next; //当前遍历的下一位
+            current.next = newHead.next; //原来的第一位地址值，由新的第一位指向，变成第二位
+            newHead.next = current;
 
-            if(temp.next==null) break;
-            temp = temp.next;
+            current = next; //赋一个新的地址值
         }
-        linkedList.getHead().next = reverseHead;
+        linkedList.getHead().next = newHead.next;
     }
 
 

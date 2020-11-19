@@ -105,4 +105,25 @@ public class SingleLinkedList{
         }
         return size;
     }
+
+    /**
+     * 翻转当前链表（复习一遍）
+     * @return
+     */
+    public SingleLinkedList reverse(){
+        if(size()<=1) return this;
+        //当前表头 head
+        TrueManNode newHead = new TrueManNode();
+
+        TrueManNode current = head.next;
+        while(current!=null) {
+            TrueManNode next = current.next;
+            current.next = newHead.next; //修改了当前遍历到的结点的后继元素地址，故要用变量提前记录下更改前的地址值
+            newHead.next = current;
+            current = next; //最后还原回原链表中的结点地址值，用于原链表的遍历
+        }
+        //讲新head的内存结点赋值给旧的表头地址变量
+        head = newHead;
+        return this;
+    }
 }

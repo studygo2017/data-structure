@@ -496,13 +496,17 @@ public class SingleLinkedList{
      */
     private TrueManNode head = new TrueManNode();
 
+    public TrueManNode getHead(){
+        return head;
+    }
+
     /**
      * 添加结点
      * @return
      */
     public boolean add(TrueManNode node){
         if(isEmpty()) {
-            head = node;
+            head.next = node;
         }else{
             TrueManNode temp = head.next;
             while(true){
@@ -554,11 +558,12 @@ public class SingleLinkedList{
      */
     public String toString(){
         if( isEmpty() ) return "[]";
-        StringBuilder sb = new StringBuilder("["+head.toString());
+        StringBuilder sb = new StringBuilder("[");
         TrueManNode temp = head;
         while (temp.next != null){
             temp = temp.next;
-            sb.append("   ").append(temp.toString());
+            sb.append(temp.toString());
+            if(temp.next!=null) sb.append("   ");
         }
         sb.append("]");
         return sb.toString();
@@ -568,9 +573,68 @@ public class SingleLinkedList{
         return head == null || head.next == null;
     }
 
+    /**
+     * 获取链表的有效结点个数
+     * @return 链表长度
+     */
+    public int size(){
+        TrueManNode temp = head.next; //首结点
+        if(temp == null){
+            return 0;
+        }
+        int size = 1;
+        while (temp.next != null){
+            size++;
+            temp = temp.next;
+        }
+        return size;
+    }
+
+    /**
+     * 翻转当前链表（复习一遍）
+     * @return
+     */
+    public SingleLinkedList reverse(){
+        if(size()<=1) return this;
+        //当前表头 head
+        TrueManNode newHead = new TrueManNode();
+
+        TrueManNode current = head.next;
+        while(current!=null) {
+            TrueManNode next = current.next;
+            current.next = newHead.next; //修改了当前遍历到的结点的后继元素地址，故要用变量提前记录下更改前的地址值
+            newHead.next = current;
+            current = next; //最后还原回原链表中的结点地址值，用于原链表的遍历
+        }
+        //讲新head的内存结点赋值给旧的表头地址变量
+        head = newHead;
+        return this;
+    }
 }
 ```
+- 翻转单链表
+```
+    /**
+     * 翻转链表
+     * 思路：
+     *  创建一个新链表的表头，顺序遍历原链表，将原链表的每一个结点元素添加到新表头的最前面
+     */
+    public static void reverseLink(SingleLinkedList linkedList){
+        if( linkedList.size()<=1 ) return ;
 
+        TrueManNode newHead = new TrueManNode();
+        TrueManNode current = linkedList.getHead().next; //首元素开始，用于遍历原链表的
+        TrueManNode next = null;
+        while(current!=null){ //尾元素进不来循环
+            next = current.next; //当前遍历的下一位
+            current.next = newHead.next; //原来的第一位地址值，由新的第一位指向，变成第二位
+            newHead.next = current;
+
+            current = next; //赋一个新的地址值
+        }
+        linkedList.getHead().next = newHead.next;
+    }
+```
       
    
 
