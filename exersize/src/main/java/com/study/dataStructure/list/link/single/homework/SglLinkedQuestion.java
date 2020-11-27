@@ -59,6 +59,15 @@ public class SglLinkedQuestion {
 
     }
 
+    /**
+     * 合并两个有序单链表，要求合并后的结果依然有序
+     */
+    public SingleLinkedList mergeSingleLink(SingleLinkedList link,SingleLinkedList link2){
+
+
+        return null;
+    }
+
 
 
 }
