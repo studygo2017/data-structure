@@ -852,8 +852,6 @@ public class ArrayStack {
                 this.data = data;
                 this.next = next;
             }
-    
         }
-    
     }
 ```
