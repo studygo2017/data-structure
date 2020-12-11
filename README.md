@@ -738,3 +738,122 @@ public class CircleLinkedList {
 > 栈是限制线性表中元素的插入和删除只能在线性表的同一段进行的一种特殊线性表。允许插入和删除
 的一端，为变化的一端，称为栈顶，另一端为固定的一端，称为栈底。
 > 最先放进的元素在栈底，最后放入的元素在栈顶。
+```
+/**
+ * 栈结构
+ * 后进先出
+ * 数组实现栈
+ */
+public class ArrayStack {
+
+    //底层维护栈数据的数组
+    private int[] arr;
+
+    //栈顶元素索引
+    private int topIndex = -1 ;
+
+    private static final int DEFAULT_CAPACITY = 10;
+
+    public ArrayStack(int size){
+        arr = new int[size];
+    }
+
+    public ArrayStack(){
+        this(DEFAULT_CAPACITY);
+    }
+
+    public boolean isFull(){
+        return arr.length == topIndex+1;
+    }
+
+    public boolean isEmpty(){
+        return topIndex <= -1 ;
+    }
+
+    public boolean push(int num){
+        if( isFull() ){
+            throw new RuntimeException("栈满");
+        }
+        arr[++topIndex] = num;
+        return true;
+    }
+
+    public int pop(){
+        if( isEmpty() ) throw new RuntimeException("栈已满");
+        return arr[topIndex--];
+    }
+
+    public int size(){
+        return topIndex+1;
+    }
+
+    public void list(){
+        if(isEmpty()) System.out.println("栈为空");
+        for (int i = topIndex; i >= 0 ; i--) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+```
+---
+用链表来实现栈结构：
+```
+    /**
+     * 链表实现栈结构
+     */
+    public class LinkedStack {
+    
+        private Node top = null;
+    
+        public boolean push(int value){
+            Node node = new Node(value, null);
+            if(top == null){
+                top = node;
+            }else{
+                node.next = top;
+                top = node;
+            }
+            return true;
+        }
+    
+        public int pop(){
+            if(top == null) throw new RuntimeException("栈为空");
+            int data = top.data;
+            top = top.next;
+            return data;
+        }
+    
+        public void printAll(){
+            StringBuilder sb = new StringBuilder("Stack: [");
+            if(top != null) {
+                Node temp = top;
+                while (true){
+                    if(temp == null) break;
+                    sb.append(temp.data+"  ");
+                    temp = temp.next;
+                }
+            }
+            sb.append("]");
+        }
+        
+        private static class Node{
+            private int data;
+            private Node next;
+    
+            public int getData(){
+                return data;
+            }
+            public Node getNext(){
+                return next;
+            }
+    
+            public Node(){}
+            public Node(int data,Node next){
+                this.data = data;
+                this.next = next;
+            }
+    
+        }
+    
+    }
+```

@@ -54,4 +54,5 @@ public class ArrayStack {
             System.out.println(arr[i]);
         }
     }
+
 }
