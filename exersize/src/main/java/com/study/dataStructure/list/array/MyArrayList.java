@@ -132,4 +132,24 @@ public class MyArrayList<E> implements MyList<E> {
     public MyIterator<E> iterator(){
         return new ArrayListIterator();
     }
+
+    public boolean contain(E item){
+        if(item == null) return false;
+        for (int i = 0; i < size; i++) {
+            if(arr[i] !=null && arr[i].equals(item) ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int indexOf(E item){
+        if(item == null) return -1;
+        for (int i = 0; i < size; i++) {
+            if(arr[i] !=null && arr[i].equals(item) ){
+                return i;
+            }
+        }
+        return -1;
+    }
 }

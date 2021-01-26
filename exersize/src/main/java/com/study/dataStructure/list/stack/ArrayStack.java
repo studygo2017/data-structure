@@ -5,10 +5,10 @@ package com.study.dataStructure.list.stack;
  * 后进先出
  * 数组实现栈
  */
-public class ArrayStack {
+public class ArrayStack<T> {
 
     //底层维护栈数据的数组
-    private int[] arr;
+    private T[] arr;
 
     //栈顶元素索引
     private int topIndex = -1 ;
@@ -16,7 +16,7 @@ public class ArrayStack {
     private static final int DEFAULT_CAPACITY = 10;
 
     public ArrayStack(int size){
-        arr = new int[size];
+        arr = (T[]) new Object[size];
     }
 
     public ArrayStack(){
@@ -31,17 +31,22 @@ public class ArrayStack {
         return topIndex <= -1 ;
     }
 
-    public boolean push(int num){
+    public boolean push(T t){
         if( isFull() ){
             throw new RuntimeException("栈满");
         }
-        arr[++topIndex] = num;
+        arr[++topIndex] = t;
         return true;
     }
 
-    public int pop(){
-        if( isEmpty() ) throw new RuntimeException("栈已满");
+    public T pop(){
+        if( isEmpty() ) throw new RuntimeException("栈空");
         return arr[topIndex--];
+    }
+    public T peek(){
+        if( isEmpty() ) throw new RuntimeException("栈空");
+        return arr[topIndex];
+
     }
 
     public int size(){

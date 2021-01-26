@@ -2,6 +2,7 @@ package com.study.dataStructure.list.link.single.homework;
 
 import com.study.dataStructure.list.link.single.SingleLinkedList;
 import com.study.dataStructure.list.link.single.TrueManNode;
+import com.study.dataStructure.list.stack.ArrayStack;
 
 /**
  * 1.求单链表中的有效结点个数 (略)
@@ -55,8 +56,18 @@ public class SglLinkedQuestion {
      * 从尾到头打印单链表
      */
     public static void print(SingleLinkedList linkedList){
-        // TODO 需要结合栈结构来实现
-
+        // 需要结合栈结构来实现
+        ArrayStack<TrueManNode> stack = new ArrayStack<TrueManNode>();
+        TrueManNode node = linkedList.getHead().next; //链表的第一个元素
+        while(true){
+            if(node == null) break;
+            stack.push(node);
+            node = node.next;
+        }
+        while (true){
+            if( !stack.isEmpty() ) break;
+            System.out.println(stack.pop());
+        }
     }
 
     /**

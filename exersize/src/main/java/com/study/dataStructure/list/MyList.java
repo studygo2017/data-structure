@@ -16,4 +16,8 @@ public interface MyList<E> {
 
     void clear();
 
+    boolean contain(E e);
+
+    int indexOf(E e);
+
 }
