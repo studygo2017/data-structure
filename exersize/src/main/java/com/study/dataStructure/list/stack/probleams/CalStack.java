@@ -47,14 +47,14 @@ public class CalStack {
         System.out.println("==============正整数加减乘除四则运算==============");
         while(true){
 
-            System.out.println("请输入一个正整数：");
+            System.out.println(sb.toString() + "   请输入一个正整数：");
 
             int num = sc.nextInt();
             sb.append(num + " ");
 
             while(true){
                 String str = null;
-                System.out.println("请输入一个四则运算符号：");
+                System.out.println(sb.toString() + "   请输入一个四则运算符号：");
                 if(sb.toString().split(" ").length >= 3){
                     System.out.println("=====或按q结束输入=====");
                     str = sc.next();
