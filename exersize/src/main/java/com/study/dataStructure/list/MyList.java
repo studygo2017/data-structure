@@ -20,4 +20,6 @@ public interface MyList<E> {
 
     int indexOf(E e);
 
+    MyIterator<E> iterator();
+
 }
