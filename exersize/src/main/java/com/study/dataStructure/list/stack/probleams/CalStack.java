@@ -35,10 +35,10 @@ public class CalStack {
     }
 
     private void calTest() {
-//        String expression = sysIn();
-//        System.out.println(new CalStack().calExpression(expression));
-        String expression = "7 - 10 * 8 / 40 / 2 * 3 + 7 * 5 - 2 * 10";
+        String expression = sysIn();
         System.out.println(new CalStack().calExpression(expression));
+//        String expression = "7 - 10 * 8 / 40 / 2 * 3 + 7 * 5 - 2 * 10";
+//        System.out.println(new CalStack().calExpression(expression));
     }
 
     private String sysIn() {
