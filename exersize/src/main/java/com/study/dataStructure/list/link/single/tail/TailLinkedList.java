@@ -95,4 +95,5 @@ public class TailLinkedList<E> {
     public int size(){
         return size;
     }
+
 }

@@ -17,6 +17,14 @@ public class MyLinkedList<E> implements MyList<E> {
         size = 0;
     }
 
+    public E removeLast() {
+        return remove(size - 1);
+    }
+
+    public boolean addFirst(E e) {
+        return add(0,e);
+    }
+
     private class Node{
         private E e;
         private Node next;
@@ -82,6 +90,10 @@ public class MyLinkedList<E> implements MyList<E> {
 
     public void clear() {
         dummyHead.next = null;
+    }
+
+    public boolean isEmpty(){
+        return size == 0;
     }
 
     public boolean contain(E e) {
