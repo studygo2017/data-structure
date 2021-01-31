@@ -1,10 +1,6 @@
 package com.study.dataStructure.list.link.single.lru;
 
 import com.study.dataStructure.list.link.MyLinkedList;
-import com.study.dataStructure.list.link.single.SingleLinkedList;
-import com.study.dataStructure.list.link.single.tail.TailLinkedList;
-
-import javax.swing.text.TabableView;
 
 /**
  * 用单链表来实现一个玩具LRU缓存
