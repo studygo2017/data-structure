@@ -3,9 +3,6 @@ package com.study.dataStructure.list.link;
 import com.study.dataStructure.list.MyIterator;
 import com.study.dataStructure.list.MyList;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-
 public class MyLinkedList<E> implements MyList<E> {
 
     //虚拟头节点
