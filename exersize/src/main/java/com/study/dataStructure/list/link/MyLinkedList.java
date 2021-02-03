@@ -139,4 +139,15 @@ public class MyLinkedList<E> implements MyList<E> {
             return (E) MyLinkedList.this.remove(index);
         }
     }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        while (dummyHead.next != null){
+            sb.append(dummyHead.next.e);
+            sb.append(" -> ");
+        }
+        sb.append("NULL");
+        return sb.toString();
+    }
 }
