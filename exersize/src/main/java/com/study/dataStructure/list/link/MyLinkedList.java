@@ -4,6 +4,7 @@ import com.study.dataStructure.list.MyIterator;
 import com.study.dataStructure.list.MyList;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class MyLinkedList<E> implements MyList<E> {
 
@@ -44,14 +45,15 @@ public class MyLinkedList<E> implements MyList<E> {
     public boolean add(int index, E e) {
         if(index < 0 || index > size ) throw new RuntimeException("索引越界");
         Node temp = dummyHead;
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; temp!=null ; i++) {
             if(index == i){
                 temp.next = new Node(e,temp.next);
-            }else {
-                temp = temp.next;
+                size++;
+                return true;
             }
+            temp = temp.next;
         }
-        return true;
+        return false;
     }
 
     public E remove(int index) {
@@ -143,11 +145,26 @@ public class MyLinkedList<E> implements MyList<E> {
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        while (dummyHead.next != null){
-            sb.append(dummyHead.next.e);
+        Node temp = dummyHead.next;
+        while (temp != null){
+            sb.append(temp.e);
             sb.append(" -> ");
+            temp = temp.next;
         }
         sb.append("NULL");
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        MyList<Integer> list = new MyLinkedList<Integer>();
+        for (int i = 0; i < 10; i++) {
+            list.add(i+1);
+        }
+        MyIterator<Integer> iterator = list.iterator();
+        while ( iterator.hasNext() ){
+            Integer num = iterator.next();
+            System.out.println(num);
+        }
+//        System.out.println(list);
     }
 }
