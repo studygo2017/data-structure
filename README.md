@@ -960,6 +960,7 @@ public class ArrayStack {
 ```
     /**
      * 链表实现栈结构
+     * 表头新增（入栈），表尾删除（出栈）
      */
     public class LinkedStack {
     
