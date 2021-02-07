@@ -1028,4 +1028,5 @@ public class ArrayStack {
 完毕或者返回时，该方法也就执行完毕。
 
 > 递归-迷宫问题
-![avatar](D:\code_bark\study\data-structure\exersize\maze.PNG)
+--- 
+![maze img](../img-folder/maze.PNG)
