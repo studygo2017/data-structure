@@ -42,7 +42,7 @@ public class RecursionDemo {
     }
 
     /**
-     * 按下->右->下->左的策略走迷宫
+     * 按下->右->上->左（回溯）策略走迷宫
      * 迷宫终点为map[6][5]
      * @param map 迷宫数据
      * @param i 起始位置
@@ -56,6 +56,7 @@ public class RecursionDemo {
 
             }else{ // 1墙 2已走过且可以走通  3已走过但走不通
 
+                return false;
             }
 
         }
