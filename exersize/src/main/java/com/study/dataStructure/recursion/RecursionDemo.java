@@ -7,6 +7,7 @@ public class RecursionDemo {
     public static void main(String[] args) {
         int[][] map = initMap();
         printMap(map);
+
     }
 
     /**
@@ -38,6 +39,28 @@ public class RecursionDemo {
             }
             System.out.println();
         }
+    }
+
+    /**
+     * 按下->右->下->左的策略走迷宫
+     * 迷宫终点为map[6][5]
+     * @param map 迷宫数据
+     * @param i 起始位置
+     * @param j
+     */
+    public static boolean setWay(int[][] map, int i, int j){
+        if(map[6][5] == 2){ //终点已到达
+            return true;
+        }else {
+            if(map[i][j] == 0){
+
+            }else{ // 1墙 2已走过且可以走通  3已走过但走不通
+
+            }
+
+        }
+
+        return false;
     }
 
 }
