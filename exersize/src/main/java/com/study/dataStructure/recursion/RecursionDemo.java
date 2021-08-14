@@ -48,14 +48,25 @@ public class RecursionDemo {
      * @param i 起始位置
      * @param j
      */
-    public static boolean setWay(int[][] map, int i, int j){
+    /*public static boolean setWay(int[][] map, int i, int j){
         if(map[6][5] == 2){ //终点已到达
             return true;
         }else {
             if(map[i][j] == 0){
+                int value = 2; //假定能走通
+                if( setWay(map,i+1,j) ){ //下
+                    return true;
+                }else if( setWay() ){ // 右
+
+                }else if(){ // 上
+
+                }else if(){
+
+                }else{ //下右上左都走不通
+                    value = 3;
+                }
 
             }else{ // 1墙 2已走过且可以走通  3已走过但走不通
-
                 return false;
             }
 
@@ -63,5 +74,5 @@ public class RecursionDemo {
 
         return false;
     }
-
+*/
 }
