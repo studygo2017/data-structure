@@ -1029,7 +1029,7 @@ public class ArrayStack {
 完毕或者返回时，该方法也就执行完毕。
 
 递归-迷宫问题
-![maze img](img-folder/maze.PNG)
+![maze img](imgs/maze.PNG)
    ```aidl
 
    
