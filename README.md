@@ -1043,7 +1043,41 @@ public class ArrayStack {
 1. 冒泡排序: 通过对待排序序列从前到后,**依次比较相邻元素的值,若发现则逆序交换(替换位置)**, 使值较大的元素逐渐从前移动到后部,就像*水底下的气泡一样逐渐向上冒*.
    - 注意对冒泡算法的优化: ***如果一趟排序下来没有一个元素进行过交换,就说明队列已经是有序的了***,因此可以在排序前设置一个交换标志flag记录该趟排序中是否进行元素位置交换,若未则停止算法,从而减少不必要的比较.
 ```
+/**
+ * 冒泡排序
+ */
+public class BubbleSort {
 
+    public static void main(String[] args) {
+        //生成一个指定长度,指定数字范围(小于)的随机数组
+        int[] nums = ArraysUtil.createRandomArr(100,1000);
+        System.out.println(Arrays.toString(nums));
+        bubbleSort(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    private static void bubbleSort(int[] nums) {
+        int count = 0;
+        for (int i = 0; i < nums.length-1 ; i++) {
+            boolean flag = false;
+            for (int y = 0 ; y < nums.length-1-i ; y++) {
+                if(nums[y]>nums[y+1]){
+                    int temp = nums[y];
+                    nums[y] = nums[y+1];
+                    nums[y+1] = temp;
+                    flag = true;
+                }
+            }
+            if( flag ) count++;
+            else {
+                System.out.printf("一共排序了%d趟\n",count);
+                return;
+            }
+        }
+        System.out.printf("一共排序了%d趟",count);
+    }
+
+}
 
 
 ```   
