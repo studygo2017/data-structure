@@ -1246,10 +1246,33 @@ public class BubbleSort {
    - 寻找序列中的最小值
    - 用当前位置的值交换最小值
    - 依次对所有元素重复上述过程
+   - 总结: 不断地把序列中的最小/最大值往队列前端替换
 5. **该算法之所以被称为选择排序,因为它重复选择最小的元素**    
 
 ```
+/**
+ * 选择排序
+ */
+public class SelectionSort {
 
+    private static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length-1 ; i++) {
+            int min = nums[i];
+            int minIndex = i;
+            for (int n = i+1; n < nums.length; n++) {
+                if(nums[n] < min){
+                    min = nums[n];
+                    minIndex = n;
+                }
+            }
+            //替换最小值
+            int temp = nums[minIndex];
+            nums[minIndex] = nums[i];
+            nums[i] = temp;
+        }
+    }
+
+}
 
 ```  
 
