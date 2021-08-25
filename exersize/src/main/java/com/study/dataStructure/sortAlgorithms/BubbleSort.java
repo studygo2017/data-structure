@@ -8,8 +8,6 @@ import java.util.Arrays;
  */
 public class BubbleSort {
 
-
-
     public static void main(String[] args) {
         //生成一个指定长度,指定数字范围(小于)的随机数组
         int[] nums = ArraysUtil.createRandomArr(100,1000);

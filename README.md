@@ -1277,6 +1277,50 @@ public class SelectionSort {
 ```  
 
 #### 插入排序
+1. 插入排序的逻辑是,把元素分为已排序和未排序的.每次从未排序的元素中取出第一个,与已排序的元素从头到尾逐一比较,找到插入点,将之后的元素都往后挪一位,腾出位置给该元素.
+2. 每次从输入数据中移除一个元素并将其插入已排序序列的正确位置,直到所有输入元素都插入有序序列中.
+3. 插入排序是典型的原地排序.经过k次迭代后数组具有性质:前k+1个元素已经排序.
+4. 从第一个元素开始,算成已排序序列,第二个元素一直到末尾算成未排序序列.迭代未排序序列的每个元素,不断地与已排序序列的每一个元素比较,
+以确定将未排序序列中的每一个元素插入到已排序序列中的正确位置.
+
+```
+/**
+ * 冒泡排序
+ */
+public class BubbleSort {
+
+    public static void main(String[] args) {
+        //生成一个指定长度,指定数字范围(小于)的随机数组
+        int[] nums = ArraysUtil.createRandomArr(100,1000);
+        System.out.println(Arrays.toString(nums));
+        bubbleSort(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    private static void bubbleSort(int[] nums) {
+        int count = 0;
+        for (int i = 0; i < nums.length-1 ; i++) {
+            boolean flag = false;
+            for (int y = 0 ; y < nums.length-1-i ; y++) {
+                if(nums[y]>nums[y+1]){
+                    int temp = nums[y];
+                    nums[y] = nums[y+1];
+                    nums[y+1] = temp;
+                    flag = true;
+                }
+            }
+            if( flag ) count++;
+            else {
+                System.out.printf("一共排序了%d趟\n",count);
+                return;
+            }
+        }
+        System.out.printf("一共排序了%d趟",count);
+    }
+
+}
+
+```
 
 #### 希尔排序
 
