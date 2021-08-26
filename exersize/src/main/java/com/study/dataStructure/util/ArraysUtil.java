@@ -37,4 +37,15 @@ public class ArraysUtil {
         return true;
     }
 
+    /**
+     * 交换数组中两个元素位置
+     * @param nums
+     * @param i 下标
+     * @param j 下标
+     */
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[j];
+        nums[j] = nums[i];
+        nums[i] = temp;
+    }
 }

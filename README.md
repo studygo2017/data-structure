@@ -1285,41 +1285,37 @@ public class SelectionSort {
 
 ```
 /**
- * 冒泡排序
+ * 插入排序
  */
-public class BubbleSort {
+public class InsertionSort {
 
     public static void main(String[] args) {
-        //生成一个指定长度,指定数字范围(小于)的随机数组
-        int[] nums = ArraysUtil.createRandomArr(100,1000);
+        int[] nums = ArraysUtil.createRandomArr(20,1000);
         System.out.println(Arrays.toString(nums));
-        bubbleSort(nums);
+        System.out.println( ArraysUtil.isSort(nums) );
+        insertionSort(nums);
         System.out.println(Arrays.toString(nums));
+        System.out.println( ArraysUtil.isSort(nums) );
     }
 
-    private static void bubbleSort(int[] nums) {
-        int count = 0;
-        for (int i = 0; i < nums.length-1 ; i++) {
-            boolean flag = false;
-            for (int y = 0 ; y < nums.length-1-i ; y++) {
-                if(nums[y]>nums[y+1]){
-                    int temp = nums[y];
-                    nums[y] = nums[y+1];
-                    nums[y+1] = temp;
-                    flag = true;
+    private static void insertionSort(int[] nums) {
+        //迭代未排序序列,与已排序的每一个元素逐步比较
+        for (int i = 1; i < nums.length; i++) {  //未排序序列从第二个元素即索引为1的开始
+            for (int j = 0 ; j < i ; j++) {
+                if(nums[i] < nums[j]){
+                    int temp = nums[i];
+
+                    for (int k = i; k > j ; k--) {
+                        nums[k] = nums[k-1];
+                    }
+                    nums[j] = temp;
+                    break;
                 }
             }
-            if( flag ) count++;
-            else {
-                System.out.printf("一共排序了%d趟\n",count);
-                return;
-            }
         }
-        System.out.printf("一共排序了%d趟",count);
     }
 
 }
-
 ```
 
 #### 希尔排序
