@@ -1,5 +1,8 @@
 package com.study.dataStructure.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 数组工具类
  */
@@ -48,4 +51,5 @@ public class ArraysUtil {
         nums[j] = nums[i];
         nums[i] = temp;
     }
+
 }
