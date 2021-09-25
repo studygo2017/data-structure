@@ -1377,11 +1377,64 @@ public class ShellSort {
 #### 快速排序
 - quick sort是对冒泡排序的一种改进.基本思想是:通过一趟排序将要排序的数据分割成独立的两部分,其中一部分的所有数据都比另一部分的所有数据要小,然后再按此方法对
 这两部分数据分别进行快速排序,整个排序过程可以递归进行,以此大道整个数据变成有序序列.
+- 划分: 数组A[low...high]被分成两个非空子数组A[low...q]和A[q+...hign],使得A[low...q]中的每一个元素都小于或等于A[q+1...hign]中的元素.在划分过程中需要计算
+索引q的位置.
+- 分而治之: 对两个子数组A[low...q]和A[q+1...hign]递归调用快速排序.
 - 快速排序流程:
    1. 从数列中挑选出一个基准值.
    2. 将所有比基准值小的放在基准前面,所有比基准值大的摆在基准值后面(相同的可放在任意一边); 在这个分区推出以后,该基准就处于数列的中间位置.
    3. 递归地把"基准值前面地子数列"和"基准值后面的子数列"进行排序.
+```
+public static void main(String[] args) {
+		int[] arr = { 49, 38, 65, 97, 23, 22, 76, 1, 5, 8, 2, 0, -1, 22 };
+		quickSort(arr, 0, arr.length - 1);
+		System.out.println("排序后:");
+		for (int i : arr) {
+			System.out.println(i);
+		}
+	}
 
+	private static void quickSort(int[] arr, int low, int high) {
+
+		if (low < high) {
+			// 找寻基准数据的正确索引
+			int index = getIndex(arr, low, high);
+
+			// 进行迭代对index之前和之后的数组进行相同的操作使整个数组变成有序
+			//quickSort(arr, 0, index - 1); 之前的版本，这种姿势有很大的性能问题，谢谢大家的建议
+			quickSort(arr, low, index - 1);
+			quickSort(arr, index + 1, high);
+		}
+
+	}
+
+	private static int getIndex(int[] arr, int low, int high) {
+		// 基准数据
+		int tmp = arr[low];
+		while (low < high) {
+			// 当队尾的元素大于等于基准数据时,向前挪动high指针
+			while (low < high && arr[high] >= tmp) {
+				high--;
+			}
+			// 如果队尾元素小于tmp了,需要将其赋值给low
+			arr[low] = arr[high];
+			// 当队首元素小于等于tmp时,向前挪动low指针
+			while (low < high && arr[low] <= tmp) {
+				low++;
+			}
+			// 当队首元素大于tmp时,需要将其赋值给high
+			arr[high] = arr[low];
+
+		}
+		// 跳出循环时low和high相等,此时的low或high就是tmp的正确索引位置
+		// 由原理部分可以很清楚的知道low位置的值并不是tmp,所以需要将tmp赋值给arr[low]
+		arr[low] = tmp;
+		return low; // 返回tmp的正确位置
+	}
+
+
+
+```
 #### 归并排序
 
 #### 基数排序
